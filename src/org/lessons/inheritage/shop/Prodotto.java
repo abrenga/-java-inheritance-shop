@@ -10,8 +10,8 @@ public class Prodotto {
 	private float prezzo;
 	final private static float IVA = 22;
 
-	public Prodotto(int codice, String nome, String marca, float prezzo) {
-		this.codiceProdotto = codice;
+	public Prodotto( String nome, String marca, float prezzo) {
+		this.codiceProdotto = calcolaCodice();
 		this.nome = nome;
 		this.marca = marca;
 		this.prezzo = prezzo;
@@ -51,7 +51,8 @@ public class Prodotto {
 		int numero = numeroCasuale.nextInt(100);
 		return numero;
 	}
-
+	
+	
 	public String toString() {
 		return "Codice prodotto: "+ this.codiceProdotto+", Nome: " + this.nome+", Marca: " + this.marca+", Prezzo: " + this.prezzo;
 	}
