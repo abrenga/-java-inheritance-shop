@@ -2,7 +2,7 @@ package org.lessons.inheritage.shop;
 
 import java.util.Random;
 
-public class Prodotto {
+public abstract class Prodotto implements IProdotto {
 
 	private int codiceProdotto;
 	private String nome;
@@ -10,7 +10,7 @@ public class Prodotto {
 	private float prezzo;
 	final private static float IVA = 22;
 
-	public Prodotto( String nome, String marca, float prezzo) {
+	protected Prodotto( String nome, String marca, float prezzo) {
 		this.codiceProdotto = calcolaCodice();
 		this.nome = nome;
 		this.marca = marca;
@@ -42,14 +42,21 @@ public class Prodotto {
 		this.marca = marca;
 	}
 
-	public void setPrezzo(int prezzo) {
+	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
-
+	
+	
 	static int calcolaCodice() {
 		Random numeroCasuale = new Random();
 		int numero = numeroCasuale.nextInt(100);
 		return numero;
+	}
+	
+	@Override
+	public float calcolaPrezzoSenzaIva(float prezzo) {
+		float numeroSenzaIva = this.prezzo/100 - IVA;
+		return numeroSenzaIva;
 	}
 	
 	
